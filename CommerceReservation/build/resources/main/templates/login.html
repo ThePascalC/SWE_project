@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <title>Login - Commerce Cubicle Reservation</title>
+</head>
+<body>
+<div class="container">
+<div class="row justify-content-center align-items-center" style="margin-top: 50px !important;">
+<div class="card" style="padding: 20px;">
+    <form name="f" th:action="@{/login}" method="post">
+        <div style="margin-bottom: 20px">
+        <img src="/logo.png" class="mx-auto d-block" alt="logo" style="width: 300px; height: auto; margin: 0 auto;"/>
+        </div>
+        <h4 style="text-align:center"><strong>Login</strong></h4>
+        <div th:if="${param.error}" class="alert alert-error">
+            Invalid username and/or password.
+        </div>
+        <div th:if="${param.logout}" class="alert alert-success">
+            You have been logged out.
+        </div>
+        <label for="email"><strong>Username</strong></label>
+        <div class="input-group md-3" style="margin-bottom: 15px;">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+        </div>
+            <input class="form-control" type="text" id="email" name="email"/>
+        </div>
+        <label for="password"><strong>Password</strong></label>
+        <div class="input-group md-3" style="margin-bottom: 15px;">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
+        </div>
+        <input class="form-control" type="password" id="password" name="password"/>
+        </div>
+        <div class="row justify-content-center" style="margin-top: 20px;">
+        <a th:href="@{/register}" class="btn btn-colour-1" style="margin-right: 8px;">Create Account</a>
+        <button type="submit" class="btn btn-colour-1" style="margin-left: 8px;">Login</button>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+</body>
+</html>

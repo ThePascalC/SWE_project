@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <title>View Current Reservations - Commerce Cubicle Reservation</title>
+</head>
+<body>
+<div class="container-fluid" style="background-color: #006747">
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <a class="navbar-brand" href="#"><img src="logo2.png" alt="Logo2" style="width: 200px;" ></a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/index}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/account}">Account</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> Reservations</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" th:href="@{/new_reservation}">New Reservation</a>
+                    <a class="dropdown-item" th:href="@{/view_reservations}">View Reservation(s)</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:document.logoutForm.submit()" role="menuitem">Logout</a>
+                <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+                    <input hidden type="submit" value="Log Out" />
+                </form>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div class="container">
+    <div class="row justify-content-center align-self-center">
+        <div class="card" style="padding: 15px">
+            <h3 style="text-align:center"><strong>Current Reservation</strong></h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th style="text-align:center">Cubicle #</th>
+                    <th style="text-align:center">Start Time</th>
+                    <th style="text-align:center">End Time</th>
+                    <th style="text-align:center"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="userRes: ${userReservations}">
+                    <td th:text="${userRes.cubicle.cubicleId}">#</td>
+                    <td th:text="${userRes.dateIn}">#</td>
+                    <td th:text="${userRes.dateOut}">#</td>
+                    <td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${userRes.id})}">Cancel</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
