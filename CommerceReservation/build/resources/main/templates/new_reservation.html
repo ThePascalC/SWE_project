@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <title>New Reservations - Commerce Cubicle Reservation</title>
+</head>
+<body>
+<div class="container-fluid" style="background-color: #006747">
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <a class="navbar-brand" href="#"><img src="logo2.png" alt="Logo2" style="width: 200px;" ></a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/index}">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> Reservations</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" th:href="@{/new_reservation}">New Reservation</a>
+                    <a class="dropdown-item" th:href="@{/view_reservations}">View Reservation(s)</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:document.logoutForm.submit()" role="menuitem">Logout</a>
+                <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+                    <input hidden type="submit" value="Log Out" />
+                </form>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div class="container">
+    <div class="row justify-content-center align-self-center">
+        <div class="card" style="padding: 15px">
+            <form th:action="@{/findAvailable}">
+                <div class="form-group">
+                    <h2>Create New Reservation</h2>
+                </div>
+                <div class="form-group">
+                    <label for="startDate">Start Date:</label>
+                    <input type="date" th:name="start"   class="form-control" id="startDate">
+                </div>
+                <div class="form-group">
+                    <label for="endDate">End Date:</label>
+                    <input type="date" th:name="end"  class="form-control" id="endDate">
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-colour-1">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1;
+var yyyy = today.getFullYear();
+if(dd<10){
+  dd='0'+dd
+}
+if(mm<10){
+  mm='0'+mm
+}
+
+today = yyyy+'-'+mm+'-'+dd;
+
+var maxStart = new Date();
+maxStart.setMonth(maxStart.getMonth() + 3)
+var dds = maxStart.getDate();
+var mms = maxStart.getMonth()+1;
+var yyyys = maxStart.getFullYear();
+if(dds<10){
+  dds='0'+dds
+}
+if(mms<10){
+  mms='0'+mms
+}
+
+maxStart = yyyys+'-'+mms+'-'+dds;
+
+var maxEnd = new Date();
+maxEnd.setMonth(maxEnd.getMonth() + 6)
+var dde = maxEnd.getDate();
+var mme = maxEnd.getMonth()+1;
+var yyyye = maxEnd.getFullYear();
+if(dde<10){
+  dde='0'+dde
+}
+if(mme<10){
+  mme='0'+mme
+}
+
+maxEnd = yyyye+'-'+mme+'-'+dde;
+
+document.getElementById("startDate").setAttribute("min", today);
+document.getElementById("endDate").setAttribute("min", today);
+document.getElementById("startDate").setAttribute("max", maxStart);
+document.getElementById("endDate").setAttribute("max", maxEnd);
+
+
+
+</script>
+</body>
+</html>

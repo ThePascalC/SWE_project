@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <title>Home - Commerce Cubicle Reservation</title>
+</head>
+<body>
+<div class="container-fluid" style="background-color: #006747">
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <a class="navbar-brand" href="#"><img src="logo2.png" alt="Logo2" style="width: 200px;" ></a>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/index}">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> Reservations</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" th:href="@{/new_reservation}">New Reservation</a>
+                <a class="dropdown-item" th:href="@{/view_reservations}">View Reservation(s)</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="javascript:document.logoutForm.submit()" role="menuitem">Logout</a>
+        </li>
+    </ul>
+</nav>
+</div>
+<div class="container">
+<div class="card" style="margin-top: 10%; padding: 20px;">
+    <div class="row" style="margin-top: 10px; margin-bottom: 40px !important;">
+    <div class="col col-md-4">
+    <h4>Welcome <b>[[${#request.userPrincipal.principal.getFullName}]]</b></h4>
+    </div>
+    <div class="col col-md-8 text-right">
+    <a class="btn btn-colour-1"  href="javascript:document.logoutForm.submit()" role="menuitem">Logout</a>
+    <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+        <input hidden type="submit" value="Log Out" />
+    </form>
+    </div>
+    </div>
+    <h3 style="text-align:center; margin-bottom: 30px;"><b>Commerce Cubicle Reservation</b></h3>
+<div class="row" style="text-align: center;">
+        <div class="col col-md-6 d-flex">
+        <a th:href="@{/view_reservations}" class="btn btn-colour-1 btn-custom">View reservation(s)</a>
+        </div>
+        <div class="col col-md-6 d-flex">
+        <a th:href="@{/new_reservation}" class="btn btn-colour-1 btn-custom">New reservation</a>
+        </div>
+</div>
+    </div>
+</div>
+</body>
+</html>

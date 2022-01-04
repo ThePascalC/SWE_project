@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');/* change the background color */
+*{
+font-family: 'Open Sans', sans-serif;
+}
+body{
+background-color: #e1e1e1 !important;
+}
+.navbar-custom {
+    background-color: #006747;
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: #6e6f78;
+}
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: #ffffff;
+}
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:focus .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    border-bottom: 1px solid #4fa800;
+}
+
+.btn-colour-1 {
+  color: #fff;
+  background-color: #006747;
+  border-color: #006747;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  border-radius: 0;
+}
+
+.btn-colour-1:hover,
+.btn-colour-1:active,
+.btn-colour-1:focus,
+.btn-colour-1.active {
+  /* let's darken #004E64 a bit for hover effect */
+  background: #00422E;
+  color: #ffffff;
+  border-color: #00422E;
+}
+.btn-custom{
+width: 240px;
+height: 120px;
+font-size: 20px !important;
+margin: 0 auto;
+text-align: center;
+vertical-align:middle;
+}
+.btn-custom1{
+    width: 300px;
+    height: 80px;
+    font-size: 20px !important;
+    text-align: center;
+    vertical-align: middle;
+}
+       table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        thead tr{
+            background-color: #006747;
+            color: #ffffff;
+            text-align: center;
+        }
+        th,
+        td {
+            padding: 12px 15px;
+            text-align:center;
+        }
+        .cubId{
+        font-size: 1.5em;
+        }
+
+       tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+    body tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+    tbody tr:last-of-type {
+    border-bottom: 2px solid #006747;
+}
